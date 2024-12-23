@@ -1,7 +1,7 @@
 async function recognize(base64, lang, options) {
-    const { config, utils } = options;
-    const { tauriFetch: fetch } = utils;
-    let { model = "gpt-4o", apiKey, requestPath, customPrompt } = config;
+    const {config, utils} = options;
+    const {tauriFetch: fetch} = utils;
+    let {model = "gpt-4o", apiKey, requestPath, customPrompt} = config;
 
     if (!requestPath) {
         requestPath = "https://api.openai.com";
@@ -17,7 +17,7 @@ async function recognize(base64, lang, options) {
     }
     if (!customPrompt) {
         customPrompt = "Just recognize the text in the image. Do not offer unnecessary explanations.";
-    }else{
+    } else {
         customPrompt = customPrompt.replaceAll("$lang", lang);
     }
 
@@ -31,12 +31,7 @@ async function recognize(base64, lang, options) {
         messages: [
             {
                 "role": "system",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": customPrompt
-                    }
-                ],
+                "content": customPrompt
             },
             {
                 "role": "user",
@@ -52,6 +47,7 @@ async function recognize(base64, lang, options) {
             }
         ],
     }
+
     let res = await fetch(requestPath, {
         method: 'POST',
         url: requestPath,
