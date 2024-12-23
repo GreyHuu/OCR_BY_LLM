@@ -1,7 +1,7 @@
 {
-  "id": "plugin.com.pot-app.LLL_recognize",
+  "id": "plugin.com.pot-app.LLM_recognize",
   "plugin_type": "recognize",
-  "icon": "icon.svg",
+  "icon": "icon.png",
   "display": "LLM OCR",
   "homepage": "https://github.com/GreyHuu/OCR_BY_LLM",
   "needs": [
